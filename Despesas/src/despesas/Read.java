@@ -1,4 +1,4 @@
-package controller;
+package despesas;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;

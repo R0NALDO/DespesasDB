@@ -18,7 +18,7 @@ A integridade referencial entre as tabelas deve permitir que uma despesa seja la
         Mes atual (mostrar as depesas do mes atual)
         Historico consolidado (mostrar as despesas de acordo com um periodo informado pelo usuário)
  */
-package controller;
+package despesas;
 
 import java.sql.SQLException;
 import java.util.Scanner;

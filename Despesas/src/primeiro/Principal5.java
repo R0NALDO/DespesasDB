@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class Principal5 {
-
+	
 	public static void main(String[] args) {
 		Scanner ler = new Scanner(System.in);
 		String op = "1";
@@ -54,6 +54,5 @@ public class Principal5 {
 		Connection conexao = DriverManager.getConnection(stgCnxo,"root", "");
 		Statement comando = conexao.createStatement();
 		String sql;
-		
 	}
 }
