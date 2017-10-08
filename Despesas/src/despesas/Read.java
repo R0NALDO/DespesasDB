@@ -1,6 +1,10 @@
 package despesas;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Scanner;
@@ -11,6 +15,9 @@ import java.util.Scanner;
 //import periodos.Mensal;
 //consultar despesa
 public class Read {
+	
+	public static Read read;
+
 	public static void MostrarTotal() throws ClassNotFoundException, SQLException {
 		String 	hora = "\n"+new SimpleDateFormat("dd/MM/yy HH:mm:ss").format(Calendar.getInstance().getTime());
 		String 	op = "";
@@ -26,15 +33,15 @@ public class Read {
 			//chamadas
 			switch (op) {
 			case "1":
-				ExtratoDiario();//mostra o total diário
+				read.ExtratoDiario();//mostra o total diário
 				break;
 			
 			case "2":
-				ExtratoMensal();//mostra o mes atual
+				read.ExtratoMensal();//mostra o mes atual
 				break;
 				
 			case "3":
-				ExtratoConsolidado(); //mostra o periodo escolhido
+				read.ExtratoConsolidado(); //mostra o periodo escolhido
 				break;
 				
 			case "0":
@@ -48,20 +55,65 @@ public class Read {
 			}
 		}
 	
-		private static void ExtratoConsolidado() {
-			// TODO Auto-generated method stub
+		public void ExtratoDiario() throws ClassNotFoundException, SQLException {
+			ResultSet rs =  RetornaResultSet("DESPESAS", "HISTORICO_DESPESA");
+			
+//			while (rs.next()) {
+//				System.out.println(" "+rs.getString("VALOR_DESPESA")+rs.getString("DATAS"));
+//			}
 			
 		}
 	
-		private static void ExtratoMensal() {
-			// TODO Auto-generated method stub
+		public void ExtratoMensal() throws ClassNotFoundException, SQLException {
+			ResultSet rs =  RetornaResultSet("DESPESAS", "HISTORICO_DESPESA");
+			
+//			while (rs.next()) {
+//				System.out.println(" "+rs.getString("VALOR_DESPESA")+rs.getString("DATAS"));
+//			}
 			
 		}
 	
-		private static void ExtratoDiario() {
-			// TODO Auto-generated method stub
+		public void ExtratoConsolidado() throws ClassNotFoundException, SQLException {
+			ResultSet rs =  RetornaResultSet("DESPESAS", "HISTORICO_DESPESA");
 			
+			while (rs.next()) {
+				System.out.println(" "+rs.getString("VALOR_DESPESA")+rs.getString("DATAS"));
+			}
+			
+		}
+		
+		//para ler do banco
+		public ResultSet RetornaResultSet(String nomeDoBanco, String nomeDaTabela) throws ClassNotFoundException, SQLException {
+			Class.forName("com.mysql.jdbc.Driver");
+			String stgCnxo = "jdbc:mysql://localhost/" + nomeDoBanco + "?autoReconnect=true&useSSL=false";
+			Connection cnxo = DriverManager.getConnection(stgCnxo, "root", "");
+			Statement cmdo = cnxo.createStatement();
+			String sql = "SELECT * FROM "+nomeDaTabela+";";
+			ResultSet rstst = cmdo.executeQuery(sql);
+			return rstst;
 		}
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

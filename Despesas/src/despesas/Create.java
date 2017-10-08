@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 public class Create {
+	
 	//salva a descricao do produto no banco de dados
 	public static void SalvarDespesa() throws ClassNotFoundException, SQLException {
 			//prepara os objetos
@@ -32,6 +33,7 @@ public class Create {
 		}
 		cnxo.close();
 	}
+	
 	//salva o valor do produto comprado no banco de dados
 	public static void SalvarValor() throws ClassNotFoundException, SQLException {
 		//prepara os objetos
@@ -48,11 +50,8 @@ public class Create {
 			System.out.println("Qual o valor da despesa?");
 			Double 	vlr = ler.nextDouble();
 			sql = "INSERT INTO HISTORICO_DESPESA (VALOR_DESPESA, DATAS) VALUES ("+vlr+",'"+hora+"');";
-			if (cmdo.execute(sql)) {
-				System.out.println("não gravou"); //perguntar pq retorna false se gravou
-			}else {
-				System.out.println("ok, gravou");
-			}
+			String 	msgm = (cmdo.execute(sql)) ? "não gravou" : "ok, gravou"; //perguntar pq dá false quando grava
+			System.out.println(msgm);
 			System.out.println("deseja gravar mais um? s/n");
 			op = ler.next();
 		}

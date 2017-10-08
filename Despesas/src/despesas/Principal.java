@@ -28,7 +28,7 @@ public class Principal {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, InterruptedException {
 		Scanner ler = new Scanner(System.in);
 		String op = "1";
-		
+
 		while (op !="0") {
 			System.out.println("\n--- Sistema de Despesas ---");
 			System.out.println("1- Inserir descricao \t (Nova despesa)");
@@ -85,10 +85,5 @@ A integridade referencial entre as tabelas deve permitir que uma despesa seja la
         Mes atual (mostrar as depesas do mes atual)
         Historico consolidado (mostrar as despesas de acordo com um periodo informado pelo usuário)
         
- * "" é diferente de nulo?
- * como executar uma linha especifica, fora continue
- * selenium e watsapp, pq não envia mensagem?
- * nome igual para classe e metodo, precisa usar método?
- * como subir pro github
  * quantas execuçoes o processador faz por segundo? 1000?
 */
